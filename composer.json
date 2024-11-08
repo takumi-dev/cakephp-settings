@@ -1,17 +1,16 @@
 {
-  "name": "cakemanager/cakephp-settings",
+  "name": "takumi-dev/cakephp-settings",
   "description": "Settings plugin for CakePHP",
   "type": "cakephp-plugin",
   "keywords": ["cakephp", "orm", "settings", "configure"],
   "require": {
-    "php": ">=5.4",
+    "php": ">=7.2",
     "cakephp/plugin-installer": "*",
-    "cakephp/orm": "3.*",
-    "cakemanager/cakephp-utils": "dev-master"
+    "cakephp/orm": "4.*"
   },
   "require-dev": {
-    "cakephp/orm": "~3.0",
-    "phpunit/phpunit": " 4.6.*@dev"
+    "cakephp/orm": "4.*",
+    "phpunit/phpunit": "^8.5"
   },
   "extra": {
     "installer-name": "Settings"

@@ -15,7 +15,6 @@
 namespace Settings\Model\Table;
 
 use Cake\ORM\Table;
-use Cake\Validation\Validator;
 
 /**
  * Configurations Model
@@ -28,11 +27,11 @@ class ConfigurationsTable extends Table
      * @param array $config The configuration for the Table.
      * @return void
      */
-    public function initialize(array $config)
+    public function initialize(array $config): void
     {
-        $this->table('settings_configurations');
-        $this->displayField('id');
-        $this->primaryKey('id');
+        $this->setTable('settings_configurations');
+        $this->setDisplayField('id');
+        $this->setPrimaryKey('id');
         $this->addBehavior('Timestamp');
     }
 }

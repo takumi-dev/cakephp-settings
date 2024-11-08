@@ -12,7 +12,7 @@
  * @since         1.0
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
-use Phinx\Migration\AbstractMigration;
+use Migrations\AbstractMigration;
 
 class SettingsInitial extends AbstractMigration
 {
@@ -62,7 +62,7 @@ class SettingsInitial extends AbstractMigration
      * @return void
      */
     public function down() {
-
+        $this->dropTable('settings_configurations');
     }
 
 }

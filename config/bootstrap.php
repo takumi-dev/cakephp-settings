@@ -13,8 +13,5 @@
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
 use Cake\Core\Configure;
-use Cake\Event\EventManager;
-use Cake\Core\Plugin;
-use Settings\Core\Setting;
 
 Configure::write('Settings.Prefixes.App', 'App');

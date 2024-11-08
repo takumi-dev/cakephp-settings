@@ -17,33 +17,23 @@ use Cake\Core\Configure;
 use Cake\Core\Plugin;
 use Cake\Datasource\ConnectionManager;
 use Cake\Log\Log;
-use Cake\Routing\DispatcherFactory;
+use Cake\TestSuite\Fixture\SchemaLoader;
 
 require_once 'vendor/autoload.php';
 
+if (!defined('DS')) {
+    define('DS', DIRECTORY_SEPARATOR);
+}
 define('ROOT', dirname(__DIR__) . DS);
-define('ROOT_UTILS', ROOT . 'vendor' . DS . 'cakemanager' . DS . 'cakephp-utils' . DS);
 define('CAKE_CORE_INCLUDE_PATH', ROOT . 'vendor' . DS . 'cakephp' . DS . 'cakephp');
 define('CORE_PATH', ROOT . 'vendor' . DS . 'cakephp' . DS . 'cakephp' . DS);
 define('CAKE', CORE_PATH . 'src' . DS);
+define('TESTS', ROOT . DS . 'tests');
 define('APP', ROOT . 'tests' . DS . 'App' . DS);
 define('TMP', sys_get_temp_dir() . DS);
 define('CACHE', TMP);
 define('LOGS', TMP);
 define('CONFIG', APP . 'config' . DS);
-
-//@codingStandardsIgnoreStart
-@mkdir(LOGS);
-@mkdir(SESSIONS);
-@mkdir(CACHE);
-@mkdir(CACHE . 'views');
-@mkdir(CACHE . 'models');
-//@codingStandardsIgnoreEnd
-
-require CAKE . 'Core/ClassLoader.php';
-
-$loader = new Cake\Core\ClassLoader;
-$loader->register();
 
 require_once CORE_PATH . 'config' . DS . 'bootstrap.php';
 
@@ -65,7 +55,7 @@ Configure::write('App', [
     'cssBaseUrl' => 'css/',
     'paths' => [
         'plugins' => [APP . 'Plugin' . DS],
-        'templates' => [APP . 'Template' . DS]
+        'templates' => [APP . 'templates' . DS]
     ]
 ]);
 
@@ -115,10 +105,5 @@ Log::config([
     ]
 ]);
 
-Plugin::load('Utils', ['path' => ROOT_UTILS]);
 Plugin::load('Settings', ['path' => ROOT, 'bootstrap' => true, 'routes' => true]);
-
 Carbon\Carbon::setTestNow(Carbon\Carbon::now());
-
-DispatcherFactory::add('Routing');
-DispatcherFactory::add('ControllerFactory');
